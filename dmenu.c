@@ -549,6 +549,13 @@ keypress(XKeyEvent *ev)
 		default:
 			return;
 		}
+	} else if (ev->state & ShiftMask) {
+		switch(ksym) {
+		case XK_Insert:
+			XConvertSelection(dpy, XA_PRIMARY,
+								utf8, utf8, win, CurrentTime);
+			break;
+		}
 	}
 
 	switch(ksym) {
